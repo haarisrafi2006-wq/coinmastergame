@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class CoinMasterGame {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("=== Coin Collector Game ===");
+        System.out.println("Goal: Get 100 coins to win. Lose if health ≤ 0.");
+        System.out.println("Enter health: " );
+        int health = sc.nextInt();
+        System.out.println("Enter coins: " );
+        int coins = sc.nextInt();
+        while (health > 0 && coins < 100) {
+            System.out.println("\nHealth: " + health + " | Coins: " + coins);
+            System.out.println("Choose action:");
+            System.out.println("1. Fight  (-20 health, +10 coins)");
+            System.out.println("2. Search (-10 health, +20 coins)");
+            System.out.println("3. Rest   (+15 health, -5 coins)");
+            System.out.print("Enter 1, 2, or 3: ");
+            int choice = sc.nextInt();
+            if (choice == 1) {
+                health -= 20;
+                coins += 10;
+                System.out.println("You fought!");
+            } else if (choice == 2) {
+                health -= 10;
+                coins += 20;
+                System.out.println("You searched!");
+            } else if (choice == 3) {
+                health += 15;
+                coins -= 5;
+                System.out.println("You rested!");
+            } else {
+                System.out.println("Invalid choice. Try again.");
+                continue;
+            }
+        }
+        if (coins >= 100) {
+            System.out.println("\n You win! Coins: " + coins + ", Health: " + health);
+            System.out.println("congratulations! You win!");
+        } else {
+            System.out.println("\nYou lost! Coins: " + coins + ", Health: " + health);
+            System.out.println("better luck next time!");
+        }
+        sc.close();
+    }
+}
